@@ -11,7 +11,7 @@
 <header>
 	<nav>
 		<%= link_to "London Design Jobs", root_path %>
-		<%= link_to "Submit a job", new_job_path %>
+		<%= link_to "Submit a job", new_user_job_path(current_user.id) %>
 		<%= link_to "Log in", new_session_path %>
 		<%= link_to "Log out", session_path, method: :delete  %>
 	</nav>

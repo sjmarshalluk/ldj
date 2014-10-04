@@ -18,9 +18,17 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def current_user_owns_job
+  	job = Job.find(params[:id])
+  	unless logged_in? and current_user == job.user
+  		flash[:error] = "Only the owner can edit"
+  		redirect_to job_path(job)
+  	end
+  end
+
 
   helper_method :current_user
-  helper_method :logged_in
+  helper_method :logged_in?
   helper_method :require_user
 
 

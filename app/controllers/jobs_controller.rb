@@ -9,11 +9,13 @@ class JobsController < ApplicationController
 
   def new
   	require_user
-  	@job = Job.new
+  	@user = User.find(params[:user_id])
+  	@job = @user.jobs.new
   end
 
   def create 
   	require_user
+  	@user = User.find(params[:user_id])
   	@job = Job.new(job_params)
   	if @job.save
   		flash[:success] = "That worked"
@@ -25,6 +27,11 @@ class JobsController < ApplicationController
   end
 
   def edit
+  	current_user_owns_job
+  end
+
+  def update
+  	current_user_owns_job
   end
 
 
