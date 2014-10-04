@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<header>
+	<nav>
+		<%= link_to "London Design Jobs", root_path %>
+		<%= link_to "Submit a job", new_job_path %>
+	</nav>
+</header>
+
+
+<% flash.each do |key, value| %>
+	<div class="<% key %>">
+		<p><%= value %></p>
+	</div>
+<% end %>
+
 <%= yield %>
 
 </body>
