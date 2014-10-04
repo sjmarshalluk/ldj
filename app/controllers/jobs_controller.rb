@@ -4,14 +4,16 @@ class JobsController < ApplicationController
   end
 
   def show
-  	@jobs = job.find(params[:id])
+  	@job = Job.find(params[:id])
   end
 
   def new
+  	require_user
   	@job = Job.new
   end
 
   def create 
+  	require_user
   	@job = Job.new(job_params)
   	if @job.save
   		flash[:success] = "That worked"

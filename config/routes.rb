@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'users/new'
 
+  resource :session
   resources :jobs
   resources :users
 

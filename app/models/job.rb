@@ -5,4 +5,6 @@ class Job < ActiveRecord::Base
 	validates :job_url, presence: true
 	validates :email, presence: true
 	validates :description, presence: true
+
+	belongs_to :user
 end
